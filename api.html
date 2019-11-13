@@ -1,0 +1,55 @@
+<html>
+    <body>
+    
+        <div id="div1" style="color: blueviolet;">
+            <h1>
+                First API.
+            </h1>
+        </div>
+        <br>
+        <br>
+        <div id="div2">
+            <button onclick="func()">
+                Button
+            </button>
+        </div>
+        <p id="p"></p>
+        <br>
+        <p id="p2"></p>
+        <p id="p3"> </p>
+        <button onclick="func2()">button2</button>
+        <script>
+            var c;
+            function func() {
+              var x = new XMLHttpRequest();
+              x.onreadystatechange = function()
+                {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                  document.getElementById("p").innerHTML =
+                  this.responseText;
+                  c=JSON.parse(this.responseText);
+                   
+    
+                }
+                };
+              x.open("GET", "https://reqres.in/api/users/2", true);
+              x.send();
+              
+            
+            }
+            function func2()
+            {
+                document.getElementById("p2").innerHTML="id is :"+c.data.id;
+                document.getElementById("p3").innerHTML="email is :"+c.data.email;
+            }
+            
+           
+         </script>
+        
+    </body>
+</html>
+
+<!-- news api key is  725b80d0d48c46e2b787cb6fddbfcd22 
+apilist.fun  copu url and read documentation
+simple page sara data div mein save hojae and css lagao div mein -->
